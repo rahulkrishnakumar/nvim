@@ -5,7 +5,10 @@ if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable", lazypath })
 end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
-
+-- vim copy to clipboard enablin
+-- vim.opt.clipboard = "unnamedplus"
+-- vim.opt.clipboard = "unnamed"
+-- vim.api.nvim_set_option("clipboard", "unnamed")
 require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins

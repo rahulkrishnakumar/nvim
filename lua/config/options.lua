@@ -5,3 +5,7 @@
 -- Undercurl
 vim.cmd([[let &t_Cs = "\e[4:3m"]])
 vim.cmd([[let &t_Ce = "\e[4:0m"]])
+-- copy to clipboard system
+-- vim.opt.clipboard = "unnamedplus"
+-- code diagnostics bleed out off the server
+-- vim.diagnostic.open_float()
