@@ -28,6 +28,7 @@ return {
   {
     "neovim/nvim-lspconfig",
     lazy = false,
+
     config = function()
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
@@ -44,11 +45,52 @@ return {
       lspconfig.lua_ls.setup({
         capabilities = capabilities,
       })
+      -- help and hover
+      vim.keymap.set("n", "K", vim.lsp.buf.hover, {
+        desc = "Hover",
+      })
+      vim.keymap.set("n", "gk", vim.lsp.buf.signature_help, {
+        desc = "Signature Help",
+      })
+      -- goto
+      vim.keymap.set("n", "gd", vim.lsp.buf.definition, {
+        desc = "goto definition",
+      })
+      vim.keymap.set("n", "gD", vim.lsp.buf.declaration, {
+        desc = "goto declaration",
+      })
 
-      vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-      vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
-      vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
-      vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
+      vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, {
+        desc = "goto type_definition",
+      })
+      vim.keymap.set("n", "gr", vim.lsp.buf.references, {
+        desc = "goto references",
+      })
+      vim.keymap.set("n", "gi", vim.lsp.buf.implementation, {
+        desc = "goto implementation",
+      })
+      -- Code actions,format
+      vim.keymap.set("n", "ca", vim.lsp.buf.code_action, {
+        desc = "Code actions",
+      })
+      vim.keymap.set("n", "cf", function()
+        vim.lsp.buf.format({ async = true })
+      end, {
+        desc = "Code Format",
+      })
+      -- workspace folders
+      vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, {
+        desc = "Add workspace folder",
+      })
+      vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, {
+        desc = "remove workspace folder",
+      })
+      vim.keymap.set("n", "<space>wl", function()
+        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+      end, {
+        desc = "List workspace folder",
+      })
+      -- Formating
     end,
   },
 
