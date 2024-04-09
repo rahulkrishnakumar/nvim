@@ -209,7 +209,7 @@ return {
     },
   },
 
-  -- lsp servers
+  -- lsp servers Devaslife config
   -- {
   --   "neovim/nvim-lspconfig",
   --   init = function()

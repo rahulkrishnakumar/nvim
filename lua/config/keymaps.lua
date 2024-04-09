@@ -35,11 +35,13 @@ keymap.set("n", "<C-w><down>", "<C-w>-")
 -- keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 -- keymap.set("n", "<leader>Y", [["+Y]])
 -- Diagnostics
-keymap.set("n", "<C-jjj>", function()
-  vim.diagnostic.goto_next()
-end, opts)
+-- keymap.set("n", "<C-jjj>", function()
+--   vim.diagnostic.goto_next()
+-- end, opts)
 keymap.set("n", "<leader>dd", function()
   vim.diagnostic.open_float()
 end, opts)
 -- keymap for inc rename
 keymap.set("n", "<leader>rn", ":IncRename ")
+-- diagnostics (trouble plugin)
+
