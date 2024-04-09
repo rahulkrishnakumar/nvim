@@ -41,3 +41,5 @@ end, opts)
 keymap.set("n", "<leader>dd", function()
   vim.diagnostic.open_float()
 end, opts)
+-- keymap for inc rename
+keymap.set("n", "<leader>rn", ":IncRename ")
