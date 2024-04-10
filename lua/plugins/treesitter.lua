@@ -20,6 +20,11 @@ return {
         "scss",
         "sql",
         "svelte",
+        "tsx",
+        "html",
+        "javascript",
+        "yaml",
+        "json",
       },
 
       -- matchup = {

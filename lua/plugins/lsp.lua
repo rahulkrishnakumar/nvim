@@ -12,6 +12,7 @@ return {
         "tailwindcss-language-server",
         "typescript-language-server",
         "css-lsp",
+        "emmet_ls",
       })
     end,
   },
@@ -42,8 +43,22 @@ return {
       lspconfig.html.setup({
         capabilities = capabilities,
       })
+      lspconfig.tailwindcss.setup({
+        capabilities = capabilities,
+      })
       lspconfig.lua_ls.setup({
         capabilities = capabilities,
+      })
+      lspconfig.emmet_ls.setup({
+        capabilities = capabilities,
+        filetypes = {
+          "css",
+          "html",
+          "javascript",
+          "javascriptreact",
+          "typescript",
+          "typescriptreact",
+        },
       })
       -- help and hover
       vim.keymap.set("n", "K", vim.lsp.buf.hover, {
