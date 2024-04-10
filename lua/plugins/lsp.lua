@@ -54,9 +54,6 @@ return {
         filetypes = {
           "css",
           "html",
-          "javascript",
-          "javascriptreact",
-          "typescript",
           "typescriptreact",
         },
       })
