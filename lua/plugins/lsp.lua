@@ -12,7 +12,7 @@ return {
         "tailwindcss-language-server",
         "typescript-language-server",
         "css-lsp",
-        "emmet_ls",
+        "emmet-ls",
       })
     end,
   },
