@@ -1,9 +1,9 @@
 {
   "extras": [
-
+    "lazyvim.plugins.extras.editor.illuminate"
   ],
   "news": {
-    "NEWS.md": "3314"
+    "NEWS.md": "4828"
   },
   "version": 3
 }
