@@ -10,7 +10,7 @@ vim.opt.swapfile = false
 -- disable bacup copy
 vim.opt.backupcopy = "yes"
 -- vim copy to clipboard enablin
--- vim.opt.clipboard = "unnamedplus"
+vim.opt.clipboard = "unnamedplus"
 -- vim.opt.clipboard = "unnamed"
 -- vim.api.nvim_set_option("clipboard", "unnamed")
 require("lazy").setup({
