@@ -13,6 +13,7 @@ return {
         "typescript-language-server",
         "css-lsp",
         "emmet-ls",
+        "astro-language-server",
       })
     end,
   },
@@ -55,6 +56,14 @@ return {
           "css",
           "html",
           "typescriptreact",
+          "astro",
+        },
+      })
+      lspconfig.astro.setup({
+        capabilities = capabilities,
+        cmd = { "astro-ls", "--stdio" },
+        filetypes = {
+          "astro",
         },
       })
       -- help and hover
