@@ -53,10 +53,10 @@ return {
       lspconfig.emmet_ls.setup({
         capabilities = capabilities,
         filetypes = {
-          "css",
-          "html",
           "typescriptreact",
           "astro",
+          "css",
+          "html",
         },
       })
       lspconfig.astro.setup({
