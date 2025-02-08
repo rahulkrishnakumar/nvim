@@ -60,15 +60,12 @@ return {
     },
   },
 
-  -- animations
   {
-    "echasnovski/mini.animate",
-    event = "VeryLazy",
-    opts = function(_, opts)
-      opts.scroll = {
-        enable = false,
-      }
-    end,
+    "snacks.nvim",
+    opts = {
+      scroll = { enabled = false },
+    },
+    keys = {},
   },
 
   -- buffer line
@@ -85,41 +82,6 @@ return {
         -- separator_style = "slant",
         show_buffer_close_icons = false,
         show_close_icon = false,
-      },
-    },
-  },
-
-  -- statusline
-  {
-    "nvim-lualine/lualine.nvim",
-    event = "VeryLazy",
-    opts = {
-      options = {
-        -- globalstatus = false,
-        theme = "solarized_dark",
-      },
-      sections = {
-        lualine_c = {
-          {
-            "filename",
-            file_status = true, -- Displays file status (readonly status, modified status)
-            newfile_status = false, -- Display new file status (new file means no write after created)
-            path = 1, -- 0: Just the filename
-            -- 1: Relative path
-            -- 2: Absolute path
-            -- 3: Absolute path, with tilde as the home directory
-            -- 4: Filename and parent dir, with tilde as the home directory
-
-            shorting_target = 40, -- Shortens path to leave 40 spaces in the window
-            -- for other components. (terrible name, any suggestions?)
-            symbols = {
-              modified = "[+]", -- Text to show when the file is modified.
-              readonly = "[-]", -- Text to show when the file is non-modifiable or readonly.
-              unnamed = "[No Name]", -- Text to show for unnamed buffers.
-              newfile = "[New]", -- Text to show for newly created file before first write
-            },
-          },
-        },
       },
     },
   },
@@ -156,6 +118,25 @@ return {
     end,
   },
 
+  -- statusline
+  {
+    "nvim-lualine/lualine.nvim",
+    opts = function(_, opts)
+      local LazyVim = require("lazyvim.util")
+      opts.sections.lualine_c[4] = {
+        LazyVim.lualine.pretty_path({
+          length = 0,
+          relative = "cwd",
+          modified_hl = "MatchParen",
+          directory_hl = "",
+          filename_hl = "Bold",
+          modified_sign = "",
+          readonly_icon = " 󰌾 ",
+        }),
+      }
+    end,
+  },
+
   {
     "folke/zen-mode.nvim",
     cmd = "ZenMode",
@@ -170,23 +151,20 @@ return {
   },
 
   {
-    "nvimdev/dashboard-nvim",
-    event = "VimEnter",
-    opts = function(_, opts)
-      local logo = [[
-
-        ██████╗ ██╗  ██╗ ██████╗ ██████╗ ███╗   ███╗
-        ██╔══██╗██║ ██╔╝██╔════╝██╔═══██╗████╗ ████║
-        ██████╔╝█████╔╝ ██║     ██║   ██║██╔████╔██║
-        ██╔══██╗██╔═██╗ ██║     ██║   ██║██║╚██╔╝██║
-        ██║  ██║██║  ██╗╚██████╗╚██████╔╝██║ ╚═╝ ██║
-        ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚═╝     ╚═╝
-                                                    
-
-      ]]
-
-      logo = string.rep("\n", 8) .. logo .. "\n\n"
-      opts.config.header = vim.split(logo, "\n")
-    end,
+    "folke/snacks.nvim",
+    opts = {
+      dashboard = {
+        preset = {
+          header = [[
+██████╗ ██╗  ██╗ ██████╗ ██████╗ ███╗   ███╗
+██╔══██╗██║ ██╔╝██╔════╝██╔═══██╗████╗ ████║
+██████╔╝█████╔╝ ██║     ██║   ██║██╔████╔██║
+██╔══██╗██╔═██╗ ██║     ██║   ██║██║╚██╔╝██║
+██║  ██║██║  ██╗╚██████╗╚██████╔╝██║ ╚═╝ ██║
+╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚═╝     ╚═╝
+   ]],
+        },
+      },
+    },
   },
 }
